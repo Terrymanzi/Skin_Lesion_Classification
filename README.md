@@ -8,7 +8,7 @@ This project implements the Skin Lesion Classification project for melanoma dete
 **Requirements:** Run in Google Colab with GPU for faster training.Or on Kaggle.
 **Reproducibility:** Set random seeds. Document all steps.
 
-# DATASET
+## DATASET
 **Key Findings and Analysis**
 Dataset Characteristics: This benchmark consists of 10015 images that are the result of an intensive study developed by various entities. The samples are represented in RGB format and have dimensions 600*450 (length and width respectively). This benchmark promotes the study of seven different types of skin lesions:
 
@@ -41,3 +41,12 @@ The HAM10000 dataset presents significant class imbalance (~11% malignant vs. 89
 
 - False Negatives (FN): Most critical in medical context - missing malignant cases can be life-threatening. Our models show varying FN rates, with DL approaches generally achieving better sensitivity.
 - False Positives (FP): Lead to unnecessary biopsies and patient anxiety but are less critical than FNs. The trade-off between sensitivity and specificity can be adjusted via threshold tuning.
+
+## Results
+| Model                         | Type             | Memory   | Accuracy | Precision | Recall | F1-Score | AUC-ROC | Model File                     |
+|------------------------------|------------------|----------|----------|-----------|--------|----------|---------|-------------------------------|
+| Logistic Regression          | Traditional ML   | < 1 MB   | 73.7%    | 14.5%     | 27.9%  | 19.1%    | 62.7%   | —                             |
+| SVM                          | Traditional ML   | < 1 MB   | 65.5%    | 20.6%     | 73.9%  | 32.2%    | 75.6%   | —                             |
+| Random Forest                | Traditional ML   | < 1 MB   | 80.6%    | 32.5%     | 69.4%  | 44.3%    | 85.5%   | best_traditional_ml_model.pkl |
+| Sequential CNN               | Deep Learning    | 295.6 MB | 76.6%    | 28.5%     | 72.3%  | 40.9%    | 83.3%   | sequential_cnn_model.h5       |
+| Transfer Learning (MobileNetV2) | Deep Learning | 24.8 MB  | 83.0%    | 35.6%     | 64.3%  | 45.9%    | 86.2%   | functional_mobilenet_model.h5 |
